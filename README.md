@@ -20,14 +20,6 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 * The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
 * The installer (`install.sh`) will run `~/.extra/install.sh`.
 
-## Additional resources
-
-* [Awesome Dotfiles](https://github.com/webpro/awesome-dotfiles)
-* [Homebrew](https://brew.sh)
-* [homebrew-cask](https://caskroom.github.io) / [usage](https://github.com/phinze/homebrew-cask/blob/master/USAGE.md)
-* [Bash prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)
-* [Solarized Color Theme for GNU ls](https://github.com/seebi/dircolors-solarized)
-
 ## Credits
 
 Many thanks to the [dotfiles community](https://dotfiles.github.io/).
