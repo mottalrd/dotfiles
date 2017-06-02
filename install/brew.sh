@@ -19,11 +19,8 @@ brew upgrade
 # Install packages
 
 apps=(
-  bash-completion2
-  bats
-  battery
+  bash-completion
   coreutils
-  dockutil
   ffmpeg
   fasd
   gifsicle
@@ -35,7 +32,6 @@ apps=(
   httpie
   imagemagick
   jq
-  mackup
   peco
   psgrep
   python

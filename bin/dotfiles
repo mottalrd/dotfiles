@@ -9,26 +9,13 @@ sub_help () {
   echo
   echo "Commands:"
   echo "   help             This help message"
-  echo "   edit             Open dotfiles in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)"
   echo "   reload           Reload dotfiles"
-  echo "   test             Run tests"
   echo "   update           Update packages and pkg managers (OS, brew, npm, gem, pip)"
-  echo "   clean            Clean up caches (brew, npm, gem, rvm)"
-  echo "   macos            Apply macOS system defaults"
-  echo "   dock             Apply macOS Dock settings"
-}
-
-sub_edit () {
-  sh -c "$EDITOR_ALT $DOTFILES_DIR"
-  sh -c "$GIT_GUI $DOTFILES_DIR"
+  echo "   clean            Clean up caches (brew, npm, gem)"
 }
 
 sub_reload () {
   . ~/.bash_profile && echo "Bash reloaded."
-}
-
-sub_test () {
-  bats "$DOTFILES_DIR"/test/*.bats
 }
 
 sub_update () {
@@ -48,24 +35,10 @@ sub_clean () {
   brew cask cleanup
   npm cache clean
   gem cleanup
-  rvm cleanup all
 }
-
-sub_macos () {
-  for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
-    echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
-  done
-  echo "Done. Some changes may require a logout/restart to take effect."
-}
-
-sub_dock () {
-  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
-}
-
-# Make sure to keep this in sync with the available public commands
 
 sub_completion () {
-  echo "help edit reload test update clean macos dock"
+  echo "help reload update clean"
 }
 
 case $COMMAND_NAME in

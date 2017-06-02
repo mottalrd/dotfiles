@@ -1,24 +1,7 @@
 # .files
 
 These are my dotfiles. Take anything you want, but at your own risk.
-
-It targets macOS systems, but since it has some defensive checks it should work on *nix as well (works well on a few Linux boxes and Ubuntu 16).
-
-## Package overview
-
-* Core
-  * Bash + [coreutils](https://en.wikipedia.org/wiki/GNU_Core_Utilities) + bash-completion
-  * [Homebrew](https://brew.sh), [homebrew-cask](https://caskroom.github.io)
-  * Node.js + npm
-  * GNU [sed](https://www.gnu.org/software/sed/), [grep](https://www.gnu.org/software/grep/), [Wget](https://www.gnu.org/software/wget/)
-  * [fasd](https://github.com/clvv/fasd), [psgrep](https://github.com/jvz/psgrep/blob/master/psgrep), [pgrep](https://linux.die.net/man/1/pgrep), [spot](https://github.com/guille/spot), [tree](http://mama.indstate.edu/users/ice/tree/), [vtop](https://github.com/MrRio/vtop)
-  * Git + [SourceTree](https://www.sourcetreeapp.com) + [hub](https://hub.github.com/)
-  * [rvm](https://rvm.io/) (Ruby 2.1), [lunchy](https://github.com/eddiezane/lunchy)
-  * Python 2
-* Dev (FE/JS/JSON): [jq](https://stedolan.github.io/jq/), [nodemon](https://nodemon.io), [peco](https://peco.github.io), [superstatic](https://github.com/firebase/superstatic), [underscore-cli](https://github.com/ddopson/underscore-cli)
-* Graphics: [ffmpeg](https://www.ffmpeg.org), [gifsicle](https://www.lcdf.org/gifsicle), [imagemagick](https://www.imagemagick.org), [svgo](https://github.com/svg/svgo)
-* macOS: [dockutil](https://github.com/kcrawford/dockutil), [Hammerspoon](https://www.hammerspoon.org/), [Mackup](https://github.com/lra/mackup), [Quick Look plugins](https://github.com/sindresorhus/quick-look-plugins)
-* [macOS apps](https://github.com/webpro/dotfiles/blob/master/install/brew-cask.sh)
+Please review the `install` folder before running
 
 ## Install
 
@@ -26,24 +9,7 @@ On a sparkling fresh installation of macOS:
 
     sudo softwareupdate -i -a
     xcode-select --install
-
-Install the dotfiles with either Git or curl:
-
-### Clone with Git
-
-    git clone https://github.com/webpro/dotfiles.git ~/.dotfiles
-    git clone https://github.com/webpro/extra.git ~/.extra       # Optional, see below
     source ~/.dotfiles/install.sh
-
-### Remotely install using curl
-
-Alternatively, you can install this into `~/.dotfiles` remotely without Git using curl:
-
-    sh -c "`curl -fsSL https://raw.github.com/webpro/dotfiles/master/remote-install.sh`"
-
-Or, using wget:
-
-    sh -c "`wget -O - --no-check-certificate https://raw.githubusercontent.com/webpro/dotfiles/master/remote-install.sh`"
 
 ## The `dotfiles` command
 
@@ -56,7 +22,7 @@ Or, using wget:
        reload           Reload dotfiles
        test             Run tests
        update           Update packages and pkg managers (OS, brew, npm, gem, pip)
-       clean            Clean up caches (brew, npm, gem, rvm)
+       clean            Clean up caches (brew, npm, gem, etc..)
        macos            macOS system defaults
        dock             Apply macOS Dock settings
 
