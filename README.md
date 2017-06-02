@@ -22,4 +22,4 @@ Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
 ## Credits
 
-Many thanks to the [dotfiles community](https://dotfiles.github.io/)
+Many thanks to the [dotfiles community](https://dotfiles.github.io/).
