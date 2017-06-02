@@ -11,21 +11,6 @@ On a sparkling fresh installation of macOS:
     xcode-select --install
     source ~/.dotfiles/install.sh
 
-## The `dotfiles` command
-
-    $ dotfiles help
-    Usage: dotfiles <command>
-
-    Commands:
-       help             This help message
-       edit             Open dotfiles in editor ($EDITOR_ALT) and Git GUI ($GIT_GUI)
-       reload           Reload dotfiles
-       test             Run tests
-       update           Update packages and pkg managers (OS, brew, npm, gem, pip)
-       clean            Clean up caches (brew, npm, gem, etc..)
-       macos            macOS system defaults
-       dock             Apply macOS Dock settings
-
 ## Customize/extend
 
 You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
