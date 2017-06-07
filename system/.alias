@@ -3,6 +3,7 @@
 alias _="sudo"
 alias g="git"
 alias rr="rm -rf"
+alias be="bundle exec"
 
 # Default options
 
