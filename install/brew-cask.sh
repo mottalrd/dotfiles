@@ -25,6 +25,7 @@ apps=(
   virtualbox
   rubymine
   pycharm
+  java
 )
 
 brew cask install "${apps[@]}"

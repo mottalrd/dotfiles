@@ -40,6 +40,7 @@ apps=(
   tree
   wget
   wifi-password
+  jenv
 )
 
 brew install "${apps[@]}"
