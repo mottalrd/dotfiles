@@ -26,6 +26,7 @@ apps=(
   rubymine
   pycharm
   java
+  psequel
 )
 
 brew cask install "${apps[@]}"
