@@ -28,6 +28,7 @@ apps=(
   java
   psequel
   skyfonts
+  caffeine
 )
 
 brew cask install "${apps[@]}"
