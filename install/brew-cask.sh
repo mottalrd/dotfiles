@@ -27,6 +27,7 @@ apps=(
   pycharm
   java
   psequel
+  skyfonts
 )
 
 brew cask install "${apps[@]}"
