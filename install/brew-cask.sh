@@ -30,6 +30,7 @@ apps=(
   skyfonts
   caffeine
   skype
+  trailer
 )
 
 brew cask install "${apps[@]}"
