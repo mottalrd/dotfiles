@@ -31,6 +31,7 @@ apps=(
   caffeine
   skype
   trailer
+  visual-paradigm-ce
 )
 
 brew cask install "${apps[@]}"
