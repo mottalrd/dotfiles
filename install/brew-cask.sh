@@ -34,6 +34,7 @@ apps=(
   anki
   dash
   jumpcut
+  visual-paradigm-ce
 )
 
 brew cask install "${apps[@]}"
