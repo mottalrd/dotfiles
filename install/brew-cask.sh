@@ -31,6 +31,9 @@ apps=(
   caffeine
   skype
   trailer
+  anki
+  dash
+  jumpcut
 )
 
 brew cask install "${apps[@]}"
