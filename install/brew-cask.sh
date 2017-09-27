@@ -35,6 +35,8 @@ apps=(
   dash
   jumpcut
   visual-paradigm-ce
+  postman
+  keyboard-maestro
 )
 
 brew cask install "${apps[@]}"
