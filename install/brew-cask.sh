@@ -37,6 +37,7 @@ apps=(
   visual-paradigm-ce
   postman
   keyboard-maestro
+  clipy
 )
 
 brew cask install "${apps[@]}"
