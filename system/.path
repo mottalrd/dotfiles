@@ -16,6 +16,8 @@ prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
 prepend-path "$HOME/.rbenv/bin"
 prepend-path "/usr/local/share/git-core/contrib/diff-highlight"
+prepend-path "/usr/local/opt/qt@5.5/bin"
+prepend-path "/usr/local/opt/libxml2/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755

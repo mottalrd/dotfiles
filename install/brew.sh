@@ -41,6 +41,8 @@ apps=(
   wget
   wifi-password
   jenv
+  qt@5.5
+  libxml2
 )
 
 brew install "${apps[@]}"
