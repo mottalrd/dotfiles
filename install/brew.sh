@@ -26,6 +26,7 @@ apps=(
   gifsicle
   git
   git-extras
+  git-completion
   gnu-sed --with-default-names
   grep --with-default-names
   hub
