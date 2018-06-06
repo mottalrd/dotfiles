@@ -18,7 +18,6 @@ apps=(
   google-drive
   macdown
   opera
-  screenflow
   slack
   sourcetree
   transmit
@@ -33,7 +32,6 @@ apps=(
   trailer
   anki
   dash
-  jumpcut
   visual-paradigm-ce
   postman
   keyboard-maestro
