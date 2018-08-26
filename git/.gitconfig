@@ -7,7 +7,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vim
+	editor = vim
   filemode = false
   trustctime = false
   autocrlf = input
@@ -75,7 +75,7 @@
   prompt = false
 
 [push]
-  default = simple
+	default = current
   followTags = true
 
 [fetch]
