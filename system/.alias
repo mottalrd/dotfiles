@@ -80,3 +80,7 @@ alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 # When using ag search also hidden files
 
 alias ag='ag --hidden'
+
+# A cat program replacement with syntaxt highlighting
+
+alias cat='bat'

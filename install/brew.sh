@@ -44,7 +44,10 @@ apps=(
   jenv
   qt@5.5
   libxml2
-  macvim
+  neovim
+  fzf
+  diff-so-fancy
+  bat
 )
 
 brew install "${apps[@]}"

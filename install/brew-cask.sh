@@ -36,6 +36,7 @@ apps=(
   postman
   keyboard-maestro
   clipy
+  hammerspoon
 )
 
 brew cask install "${apps[@]}"
