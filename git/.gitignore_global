@@ -5,3 +5,7 @@
 node_modules
 bower_components
 npm-debug.log
+.git
+.tags
+*.swp
+.vim-session
