@@ -48,6 +48,7 @@ apps=(
   fzf
   diff-so-fancy
   bat
+  findutils
 )
 
 brew install "${apps[@]}"
