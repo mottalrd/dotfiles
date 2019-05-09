@@ -37,6 +37,7 @@ apps=(
   keyboard-maestro
   clipy
   hammerspoon
+  kabiner-elements
 )
 
 brew cask install "${apps[@]}"
