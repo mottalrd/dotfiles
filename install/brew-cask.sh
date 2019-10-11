@@ -38,6 +38,7 @@ apps=(
   clipy
   hammerspoon
   kabiner-elements
+  dbeaver-community
 )
 
 brew cask install "${apps[@]}"
