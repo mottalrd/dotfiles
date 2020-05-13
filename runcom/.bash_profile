@@ -63,3 +63,9 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 # Export
 
 export OS DOTFILES_DIR EXTRA_DIR
+
+# Pyenv conf
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

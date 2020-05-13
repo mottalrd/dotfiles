@@ -50,6 +50,7 @@ apps=(
   bat
   findutils
   tldr
+  pyenv
 )
 
 brew install "${apps[@]}"
