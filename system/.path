@@ -19,6 +19,7 @@ prepend-path "$HOME/.vim/bin"
 prepend-path "/usr/local/share/git-core/contrib/diff-highlight"
 prepend-path "/usr/local/opt/qt@5.5/bin"
 prepend-path "/usr/local/opt/libxml2/bin"
+prepend-path "$DOTFILES_DIR/etc/git-fuzzy/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
