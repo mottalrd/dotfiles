@@ -51,6 +51,7 @@ apps=(
   findutils
   tldr
   pyenv
+  languagetool
 )
 
 brew install "${apps[@]}"
