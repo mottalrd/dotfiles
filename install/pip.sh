@@ -4,3 +4,4 @@ if ! is-executable pip; then
 fi
 
 pip install git-sweep
+pip3 install neovim-remote
