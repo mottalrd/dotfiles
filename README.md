@@ -13,7 +13,7 @@ On a sparkling fresh installation of macOS:
 
 ## Customize/extend
 
-You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
+You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.zshenv` automatically. This file is in `.gitignore`.
 
 ## Credits
 
