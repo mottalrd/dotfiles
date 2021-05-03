@@ -2,10 +2,9 @@
 
 # Get current dir (so run this script from anywhere)
 
-export DOTFILES_DIR DOTFILES_CACHE EXTRA_DIR
+export DOTFILES_DIR DOTFILES_CACHE
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
-EXTRA_DIR="$HOME/.extra"
 
 # Common functions
 
@@ -17,30 +16,23 @@ if is-executable git -a -d "$DOTFILES_DIR/.git"; then git --work-tree="$DOTFILES
 
 # Bunch of symlinks
 
-ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
-ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
-ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
-ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
-ln -sfv "$DOTFILES_DIR/git/.git_commit_template" ~
-ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+if [[ "$1" == "symlink" ]]
+then
+  ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+  ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
+  ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
+  ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+  ln -sfv "$DOTFILES_DIR/git/.git_commit_template" ~
+  ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+fi
 
 # Package managers & packages
 
-. "$DOTFILES_DIR/install/brew.sh"
-. "$DOTFILES_DIR/install/npm.sh"
-. "$DOTFILES_DIR/install/pip.sh"
-
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$1" == "packages" ]]
+then
+  . "$DOTFILES_DIR/install/brew.sh"
+  . "$DOTFILES_DIR/install/npm.sh"
+  . "$DOTFILES_DIR/install/pip.sh"
   . "$DOTFILES_DIR/install/brew-cask.sh"
   . "$DOTFILES_DIR/install/gems.sh"
-fi
-
-# Run tests
-
-if is-executable bats; then bats test/*.bats; else echo "Skipped: tests (missing: bats)"; fi
-
-# Install extra stuff
-
-if [ -d "$EXTRA_DIR" -a -f "$EXTRA_DIR/install.sh" ]; then
-  . "$EXTRA_DIR/install.sh"
 fi

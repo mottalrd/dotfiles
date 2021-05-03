@@ -46,23 +46,13 @@ fi
 
 eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 
-# Hook for extra/custom stuff
-
-EXTRA_DIR="$HOME/.extra"
-
-if [ -d "$EXTRA_DIR" ]; then
-  for EXTRAFILE in "$EXTRA_DIR"/runcom/*.sh; do
-    [ -f "$EXTRAFILE" ] && . "$EXTRAFILE"
-  done
-fi
-
 # Clean up
 
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 
 # Export
 
-export OS DOTFILES_DIR EXTRA_DIR
+export OS DOTFILES_DIR
 
 # Pyenv conf
 
