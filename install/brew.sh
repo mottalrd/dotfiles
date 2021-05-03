@@ -19,7 +19,6 @@ brew upgrade
 # Install packages
 
 apps=(
-  bash-completion
   coreutils
   ffmpeg
   fasd

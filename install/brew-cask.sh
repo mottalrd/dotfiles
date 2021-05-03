@@ -10,35 +10,22 @@ brew tap caskroom/versions
 # Install packages
 
 apps=(
-  atom
-  kaleidoscope
+  atom # text editor
+  kaleidoscope # diff tool
   dropbox
   firefox
   google-chrome
   google-drive
-  macdown
-  opera
+  macdown # markdown editor
   slack
-  sourcetree
-  transmit
-  virtualbox
-  rubymine
-  pycharm
-  java
-  psequel
-  skyfonts
-  caffeine
+  transmit # file transfer
+  skyfonts # fonts manager
   skype
-  trailer
-  anki
-  dash
-  visual-paradigm-ce
-  postman
-  keyboard-maestro
-  clipy
-  hammerspoon
-  kabiner-elements
-  dbeaver-community
+  trailer # pull requests
+  anki # flashcards
+  visual-paradigm-ce # uml diagrams
+  postman # api testing
+  dbeaver-community # SQL editor
 )
 
 brew cask install "${apps[@]}"
