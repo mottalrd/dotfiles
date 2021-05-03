@@ -42,10 +42,6 @@ if [ "$OS" = "macOS" ]; then
   done
 fi
 
-# Set LSCOLORS
-
-eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
-
 # Clean up
 
 unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE

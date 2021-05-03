@@ -3,15 +3,13 @@ if ! is-executable ruby -o ! is-executable curl -o ! is-executable git; then
   return
 fi
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if ! is-executable brew; then
   echo "Skipping: Homebrew packages (not found: brew)"
   return
 fi
 
-brew tap homebrew/versions
-brew tap homebrew/dupes
 brew tap Goles/battery
 brew update
 brew upgrade
@@ -25,9 +23,8 @@ apps=(
   gifsicle
   git
   git-extras
-  git-completion
-  gnu-sed --with-default-names
-  grep --with-default-names
+  gnu-sed
+  grep
   hub
   httpie
   imagemagick
@@ -41,7 +38,6 @@ apps=(
   wget
   wifi-password
   jenv
-  qt@5.5
   libxml2
   neovim
   fzf

@@ -9,7 +9,7 @@ export BREW_PREFIX_NVM=`brew --prefix nvm`
 set-config "BREW_PREFIX_NVM" "$BREW_PREFIX_NVM" "$DOTFILES_CACHE"
 
 . "${DOTFILES_DIR}/system/.nvm"
-nvm install 6
+nvm install --lts
 
 # Globally install with npm
 

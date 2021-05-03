@@ -19,6 +19,7 @@ if is-executable git -a -d "$DOTFILES_DIR/.git"; then git --work-tree="$DOTFILES
 if [[ "$1" == "symlinks" ]]
 then
   ln -sfv "$DOTFILES_DIR/runcom/.zshenv" ~
+  ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
   ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
   ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
   ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
@@ -26,13 +27,34 @@ then
   ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 fi
 
+if [[ "$1" == "ohmyzsh" ]]
+then
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
 # Package managers & packages
 
-if [[ "$1" == "packages" ]]
+if [[ "$1" == "brew" ]]
 then
   . "$DOTFILES_DIR/install/brew.sh"
+fi
+
+if [[ "$1" == "cask" ]]
+then
+. "$DOTFILES_DIR/install/brew-cask.sh"
+fi
+
+if [[ "$1" == "npm" ]]
+then
   . "$DOTFILES_DIR/install/npm.sh"
-  . "$DOTFILES_DIR/install/pip.sh"
-  . "$DOTFILES_DIR/install/brew-cask.sh"
-  . "$DOTFILES_DIR/install/gems.sh"
+fi
+
+if [[ "$1" == "pip" ]]
+then
+. "$DOTFILES_DIR/install/pip.sh"
+fi
+
+if [[ "$1" == "gems" ]]
+then
+. "$DOTFILES_DIR/install/gems.sh"
 fi
