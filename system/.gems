@@ -1,5 +1,3 @@
-eval "$(rbenv init -)"
-
 # No Spring in Rails please
 # https://github.com/rails/spring#temporarily-disabling-spring
 export DISABLE_SPRING=1
