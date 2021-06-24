@@ -26,6 +26,7 @@ apps=(
   visual-paradigm-ce # uml diagrams
   postman # api testing
   dbeaver-community # SQL editor
+  omnidisksweeper # Clean the disk, much better than Mack Disk Utility
 )
 
 brew cask install "${apps[@]}"
