@@ -20,6 +20,7 @@ if [[ "$1" == "symlinks" ]]
 then
   ln -sfv "$DOTFILES_DIR/runcom/.zshenv" ~
   ln -sfv "$DOTFILES_DIR/runcom/.zshrc" ~
+  ln -sfv "$DOTFILES_DIR/runcom/.zprofile" ~
   ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
   ln -sfv "$DOTFILES_DIR/runcom/.gemrc" ~
   ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
