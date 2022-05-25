@@ -22,6 +22,7 @@ prepend-path "/usr/local/opt/qt@5.5/bin"
 prepend-path "/usr/local/opt/libxml2/bin"
 prepend-path "$DOTFILES_DIR/etc/git-fuzzy/bin"
 prepend-path "/usr/local/opt/node@14/bin"
+prepend-path "/opt/homebrew/bin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
