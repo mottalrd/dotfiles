@@ -51,6 +51,9 @@ apps=(
   nvm
   iterm2
   postgresql
+  redis
+  yarn
+  timing
 )
 
 brew install "${apps[@]}"
