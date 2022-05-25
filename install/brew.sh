@@ -49,6 +49,7 @@ apps=(
   languagetool
   # git-fuzzy https://github.com/bigH/git-fuzzy/issues/3
   nvm
+  iterm2
 )
 
 brew install "${apps[@]}"
