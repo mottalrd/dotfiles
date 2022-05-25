@@ -48,6 +48,7 @@ apps=(
   pyenv
   languagetool
   # git-fuzzy https://github.com/bigH/git-fuzzy/issues/3
+  nvm
 )
 
 brew install "${apps[@]}"

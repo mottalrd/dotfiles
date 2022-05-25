@@ -3,33 +3,22 @@ if ! is-executable brew; then
   return
 fi
 
-brew tap caskroom/cask
-brew install brew-cask
-brew tap caskroom/versions
+brew tap homebrew/cask
 
 # Install packages
 
 apps=(
   atom # text editor
-  kaleidoscope # diff tool
-  dropbox
   firefox
   google-chrome
-  google-drive
-  macdown # markdown editor
   slack
-  transmit # file transfer
   skyfonts # fonts manager
-  skype
   trailer # pull requests
-  anki # flashcards
   visual-paradigm-ce # uml diagrams
-  postman # api testing
-  dbeaver-community # SQL editor
   omnidisksweeper # Clean the disk, much better than Mack Disk Utility
 )
 
-brew cask install "${apps[@]}"
+brew install --cask "${apps[@]}"
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize webpquicklook suspicious-package
