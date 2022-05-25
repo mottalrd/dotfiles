@@ -50,6 +50,7 @@ apps=(
   # git-fuzzy https://github.com/bigH/git-fuzzy/issues/3
   nvm
   iterm2
+  postgresql
 )
 
 brew install "${apps[@]}"
