@@ -54,6 +54,7 @@ apps=(
   redis
   yarn
   timing
+  heroku
 )
 
 brew install "${apps[@]}"
