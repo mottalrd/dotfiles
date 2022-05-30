@@ -26,6 +26,7 @@ then
   ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
   ln -sfv "$DOTFILES_DIR/git/.git_commit_template" ~
   ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+  ln -sfv "$DOTFILES_DIR/nvim/.init" ~/.config/nvim/
 fi
 
 if [[ "$1" == "ohmyzsh" ]]
