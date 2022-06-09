@@ -55,6 +55,7 @@ apps=(
   yarn
   timing
   heroku
+  ag
 )
 
 brew install "${apps[@]}"
