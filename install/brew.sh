@@ -56,6 +56,7 @@ apps=(
   timing
   heroku
   ag
+  mergestat
 )
 
 brew install "${apps[@]}"
