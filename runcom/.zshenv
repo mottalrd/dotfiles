@@ -56,4 +56,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# https://coderwall.com/p/w7fnxa/using-rbenv-ruby-from-within-vim-zsh
+# Comment out path_helper in /etc/zprofile to make rbenv work nvim
 eval "$(rbenv init - zsh)"
