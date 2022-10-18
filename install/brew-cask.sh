@@ -13,7 +13,6 @@ apps=(
   google-chrome
   slack
   skyfonts # fonts manager
-  trailer # pull requests
   visual-paradigm-ce # uml diagrams
   omnidisksweeper # Clean the disk, much better than Mack Disk Utility
 )
