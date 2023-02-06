@@ -8,7 +8,7 @@ brew tap homebrew/cask
 # Install packages
 
 apps=(
-  atom # text editor
+  visual-studio-code
   firefox
   google-chrome
   slack
