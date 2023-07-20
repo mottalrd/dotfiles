@@ -15,6 +15,7 @@ apps=(
   skyfonts # fonts manager
   visual-paradigm-ce # uml diagrams
   omnidisksweeper # Clean the disk, much better than Mack Disk Utility
+  espanso # Text expander
 )
 
 brew install --cask "${apps[@]}"
