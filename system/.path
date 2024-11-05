@@ -24,6 +24,7 @@ prepend-path "$DOTFILES_DIR/etc/git-fuzzy/bin"
 prepend-path "$DOTFILES_DIR/etc/rb/bin"
 prepend-path "/usr/local/opt/node@14/bin"
 prepend-path "/opt/homebrew/bin"
+prepend-path "/opt/homebrew/sbin"
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
