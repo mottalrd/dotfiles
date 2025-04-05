@@ -1,0 +1,67 @@
+#!/bin/bash
+
+API_URL="http://127.0.0.1:41184"
+
+# Check requirements
+for cmd in curl jq gum fzf; do
+  if ! command -v $cmd &>/dev/null; then
+    echo "❌ Required command not found: $cmd"
+    exit 1
+  fi
+done
+
+# 1. Fetch recent notes
+NOTE_LIST=$(curl -s "$API_URL/notes?token=$JOPLIN_TOKEN&fields=title,id&order_by=updated_time&order_dir=desc&limit=10")
+
+# 2. Let user pick a note with fzf
+NOTE=$(echo "$NOTE_LIST" | jq -r '.items[] | "\(.id) :: \(.title)"' | fzf --prompt="Select note > ")
+NOTE_ID=$(echo "$NOTE" | cut -d ' ' -f1)
+
+if [ -z "$NOTE_ID" ]; then
+  echo "❌ No note selected."
+  exit 1
+fi
+
+# 3. Pick file using gum
+echo "📂 Select a file to attach:"
+FILE=$(gum file ~/)
+
+if [ -z "$FILE" ]; then
+  echo "❌ No file selected."
+  exit 1
+fi
+
+FILE_PATH=$(realpath "$FILE")
+
+# 4. Upload file to Joplin using correct API format
+echo "📤 Uploading file..."
+
+# Extract file name for the resource title
+FILE_TITLE=$(basename "$FILE_PATH")
+
+RESOURCE_JSON=$(curl -s \
+  -F "data=@$FILE_PATH" \
+  -F "props={\"title\":\"$FILE_TITLE\"}" \
+  "$API_URL/resources?token=$JOPLIN_TOKEN")
+
+RESOURCE_ID=$(echo "$RESOURCE_JSON" | jq -r '.id')
+
+if [ -z "$RESOURCE_ID" ] || [ "$RESOURCE_ID" = "null" ]; then
+  echo "❌ Failed to upload resource."
+  echo "Response: $RESOURCE_JSON"
+  exit 1
+fi
+
+# 5. Get current note content
+BODY=$(curl -s "$API_URL/notes/$NOTE_ID?token=$JOPLIN_TOKEN" | jq -r '.body // ""')
+
+# 6. Add attachment markdown at the top
+ATTACHMENT_MARKDOWN="![attachment](:/$RESOURCE_ID)\n\n$BODY"
+
+# 7. Update the note with new content
+curl -s -X PUT "$API_URL/notes/$NOTE_ID?token=$JOPLIN_TOKEN" \
+     -H "Content-Type: application/json" \
+     -d "{\"body\": \"$ATTACHMENT_MARKDOWN\"}" > /dev/null
+
+echo "✅ Successfully attached '$FILE_PATH' to the note!"
+
