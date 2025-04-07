@@ -1,10 +1,3 @@
-[user]
-	name = Alfredo Motta
-	email = motta.lrd@hotmail.it
-
-[github]
-  user = mottalrd
-
 [core]
   excludesfile = ~/.gitignore_global
 	editor = nvim -u NONE

@@ -1,4 +1,4 @@
 .cache.sh
 bin/subl
-system/.custom
+system/.private
 etc
