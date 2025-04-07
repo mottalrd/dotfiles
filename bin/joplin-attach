@@ -53,15 +53,16 @@ if [ -z "$RESOURCE_ID" ] || [ "$RESOURCE_ID" = "null" ]; then
 fi
 
 # 5. Get current note content
-BODY=$(curl -s "$API_URL/notes/$NOTE_ID?token=$JOPLIN_TOKEN" | jq -r '.body // ""')
+BODY=$(curl -s "$API_URL/notes/$NOTE_ID?token=$JOPLIN_TOKEN&fields=body" | jq -r '.body')
 
 # 6. Add attachment markdown at the top
-ATTACHMENT_MARKDOWN="![attachment](:/$RESOURCE_ID)\n\n$BODY"
+ATTACHMENT_MARKDOWN=$'## 📎 Attachment\n\n![attachment](:/'"$RESOURCE_ID"$')\n\n---\n\n'"$BODY"
+UPDATED_BODY=$(jq -n --arg body "$ATTACHMENT_MARKDOWN" '{body: $body}')
 
 # 7. Update the note with new content
 curl -s -X PUT "$API_URL/notes/$NOTE_ID?token=$JOPLIN_TOKEN" \
      -H "Content-Type: application/json" \
-     -d "{\"body\": \"$ATTACHMENT_MARKDOWN\"}" > /dev/null
+     -d "$UPDATED_BODY" > /dev/null
 
 echo "✅ Successfully attached '$FILE_PATH' to the note!"
 
