@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Start Joplin server and capture logs to a file
+joplin server start > /tmp/joplin-server.log 2>&1 &
+SERVER_PID=$!
+sleep 2
+
 API_URL="http://127.0.0.1:41184"
 
 # Check requirements
