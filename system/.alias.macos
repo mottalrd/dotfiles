@@ -8,7 +8,7 @@ alias firefox="open -a ~/Applications/Firefox.app"
 
 # Exclude macOS specific files in ZIP archives
 
-alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
+alias zip="zip -x '*.DS_Store' -x '*__MACOSX*' -x '*.AppleDouble*'"
 
 # Open iOS Simulator
 
