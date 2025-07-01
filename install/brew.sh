@@ -46,6 +46,7 @@ apps=(
   findutils
   tldr
   pyenv
+  pyenv-virtualenv
   languagetool
   # git-fuzzy https://github.com/bigH/git-fuzzy/issues/3
   nvm

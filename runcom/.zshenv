@@ -54,6 +54,7 @@ export OS DOTFILES_DIR
 
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init - zsh)"
+  eval "$(pyenv virtualenv-init -)"
 fi
 
 # https://coderwall.com/p/w7fnxa/using-rbenv-ruby-from-within-vim-zsh
