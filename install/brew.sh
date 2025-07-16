@@ -57,6 +57,7 @@ apps=(
   heroku
   ag
   pop
+  libyaml
 )
 
 brew install "${apps[@]}"
