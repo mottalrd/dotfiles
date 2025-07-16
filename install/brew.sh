@@ -19,7 +19,6 @@ brew upgrade
 apps=(
   coreutils
   ffmpeg
-  fasd
   gifsicle
   git
   git-extras
@@ -57,7 +56,6 @@ apps=(
   timing
   heroku
   ag
-  mergestat
   pop
 )
 

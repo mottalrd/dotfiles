@@ -20,7 +20,6 @@ packages=(
   spot
   superstatic
   svgo
-  tldr
   underscore-cli
   vtop
 )
