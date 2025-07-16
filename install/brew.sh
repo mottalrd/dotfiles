@@ -58,6 +58,7 @@ apps=(
   ag
   pop
   libyaml
+  bat
 )
 
 brew install "${apps[@]}"
