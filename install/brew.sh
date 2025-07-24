@@ -59,6 +59,7 @@ apps=(
   pop
   libyaml
   bat
+  ripgrep
 )
 
 brew install "${apps[@]}"
