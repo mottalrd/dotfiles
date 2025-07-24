@@ -13,8 +13,6 @@ apps=(
   google-chrome
   slack
   skyfonts # fonts manager
-  visual-paradigm-ce # uml diagrams (alternative ilograph.com)
-  omnidisksweeper # Clean the disk, much better than Mack Disk Utility
   espanso # Text expander
 )
 
