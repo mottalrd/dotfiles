@@ -12,4 +12,5 @@ alias cat='bat'
 # List declared aliases, functions
 alias listaliases="alias | sed 's/=.*//'"
 alias listfunctions="declare -f | grep '^[a-z].* ()' | sed 's/{$//'" # show non _prefixed functions
+alias claude="/Users/Alfredo/.claude/local/claude"
 
