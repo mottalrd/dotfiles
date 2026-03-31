@@ -29,6 +29,17 @@ then
   ln -sfv "$DOTFILES_DIR/nvim/init.lua" ~/.config/nvim/
 fi
 
+if [[ "$1" == "work-vpn" ]]
+then
+  mkdir -p ~/.config/ssl
+  echo "Run: bash $DOTFILES_DIR/etc/ssl/fix-work-vpn-ssl.sh"
+  echo "This generates ~/.config/ssl/work-vpn-ca-bundle.pem from the active Netskope VPN."
+  echo "The following SSL env vars should be exported in system/.private:"
+  echo "  export SSL_CERT_FILE=\"\$HOME/.config/ssl/work-vpn-ca-bundle.pem\""
+  echo "  export REQUESTS_CA_BUNDLE=\"\$HOME/.config/ssl/work-vpn-ca-bundle.pem\""
+  echo "  export NODE_EXTRA_CA_CERTS=\"\$HOME/.config/ssl/work-vpn-ca-bundle.pem\""
+fi
+
 if [[ "$1" == "ohmyzsh" ]]
 then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
