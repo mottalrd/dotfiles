@@ -26,6 +26,8 @@ prepend-path "$DOTFILES_DIR/etc/rb/bin"
 prepend-path "/usr/local/opt/node@14/bin"
 prepend-path "/opt/homebrew/bin"
 prepend-path "/opt/homebrew/sbin"
+prepend-path "$HOME/.claude/local"
+prepend-path "$HOME/.local/bin" # basecamp
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
