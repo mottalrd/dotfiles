@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BUNDLE="${CORP_CA_BUNDLE:-$HOME/.config/ssl/work-vpn-ca-bundle.pem}"
+
+if [[ ! -f "$BUNDLE" ]]; then
+  echo "Bundle not found: $BUNDLE" >&2
+  echo "Override with CORP_CA_BUNDLE=/path/to/bundle.pem $0" >&2
+  exit 1
+fi
+
+JAVA_HOME_PATH="$(/usr/libexec/java_home 2>/dev/null || true)"
+if [[ -z "$JAVA_HOME_PATH" ]]; then
+  echo "No JDK found via /usr/libexec/java_home." >&2
+  echo "Install one first: brew install --cask temurin@21" >&2
+  exit 1
+fi
+
+CACERTS="$JAVA_HOME_PATH/lib/security/cacerts"
+if [[ ! -f "$CACERTS" ]]; then
+  echo "cacerts not found at $CACERTS" >&2
+  exit 1
+fi
+
+echo "JDK:     $JAVA_HOME_PATH"
+echo "Trust:   $CACERTS"
+echo "Bundle:  $BUNDLE"
+echo
+
+WORK=$(mktemp -d)
+trap 'rm -rf "$WORK"' EXIT
+
+awk -v dir="$WORK" '
+  /-----BEGIN CERTIFICATE-----/ { n++; f = sprintf("%s/cert-%02d.pem", dir, n) }
+  n > 0 { print > f }
+' "$BUNDLE"
+
+shopt -s nullglob
+certs=("$WORK"/cert-*.pem)
+if [[ ${#certs[@]} -eq 0 ]]; then
+  echo "No certificates parsed from bundle." >&2
+  exit 1
+fi
+
+echo "Found ${#certs[@]} certificate(s) in bundle. Importing..."
+echo "(sudo required to write to the system JDK truststore)"
+echo
+
+for f in "${certs[@]}"; do
+  alias="corp-$(basename "$f" .pem)"
+  subject=$(openssl x509 -in "$f" -noout -subject 2>/dev/null | sed 's/^subject= *//')
+  echo "  -> $alias  |  $subject"
+  sudo keytool -importcert -trustcacerts -noprompt \
+    -alias "$alias" -file "$f" \
+    -keystore "$CACERTS" -storepass changeit >/dev/null
+done
+
+echo
+echo "Imported entries:"
+keytool -list -keystore "$CACERTS" -storepass changeit 2>/dev/null \
+  | grep -i '^corp-' || true
+
+echo
+echo "Done. Fully quit DavMail (menu bar -> Quit) and relaunch."

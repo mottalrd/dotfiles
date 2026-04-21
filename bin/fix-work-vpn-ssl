@@ -1,0 +1,52 @@
+#!/bin/zsh
+# Fix SSL certificate trust failures for tools behind Netskope VPN
+# Affected: Claude Code (Node.js), Python, Heroku CLI
+# Safe for: browsers, curl, Ruby (these use macOS Keychain directly)
+
+set -e
+
+BUNDLE_PATH="$HOME/.config/ssl/work-vpn-ca-bundle.pem"
+
+echo "==> Extracting Netskope certificate chain from api.anthropic.com..."
+echo | openssl s_client -connect api.anthropic.com:443 -showcerts 2>/dev/null \
+  | awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/' > /tmp/all-certs.pem
+
+CERT_COUNT=$(grep -c "BEGIN CERTIFICATE" /tmp/all-certs.pem)
+echo "    Found $CERT_COUNT certificates in chain"
+
+if [ "$CERT_COUNT" -lt 2 ]; then
+  echo "ERROR: Expected at least 2 certificates (intermediate + root). Is Netskope active?"
+  exit 1
+fi
+
+echo "==> Splitting certificates..."
+awk 'BEGIN{n=0} /-----BEGIN CERTIFICATE-----/{n++; fname="/tmp/nscert-"n".pem"} {print > fname}' /tmp/all-certs.pem
+
+echo "==> Certificate chain:"
+for f in /tmp/nscert-*.pem; do
+  SUBJECT=$(openssl x509 -in "$f" -noout -subject 2>/dev/null | sed 's/subject=//')
+  ISSUER=$(openssl x509 -in "$f" -noout -issuer 2>/dev/null | sed 's/issuer=//')
+  echo "    $(basename $f): $SUBJECT"
+done
+
+echo "==> Building combined CA bundle (macOS roots + Netskope certs)..."
+mkdir -p "$(dirname "$BUNDLE_PATH")"
+cp /etc/ssl/cert.pem "$BUNDLE_PATH"
+for f in /tmp/nscert-*.pem; do
+  # Skip the leaf cert (api.anthropic.com), keep intermediate + root
+  SUBJECT=$(openssl x509 -in "$f" -noout -subject 2>/dev/null)
+  if echo "$SUBJECT" | grep -qi "netskope\|goskope\|certadmin"; then
+    echo "    Adding $(basename $f)"
+    cat "$f" >> "$BUNDLE_PATH"
+  fi
+done
+
+echo "==> Cleaning up temp files..."
+rm -f /tmp/all-certs.pem /tmp/nscert-*.pem
+
+echo ""
+echo "Done! Restart your terminal or run: source ~/.zshenv"
+echo ""
+echo "To verify, run:"
+echo '  python3 -c "import requests; print(requests.get('\''https://api.anthropic.com'\'').status_code)"'
+echo '  node -e "require('\''https'\'').get('\''https://api.anthropic.com'\'', r => { console.log(r.statusCode); r.resume(); })"'
