@@ -34,9 +34,11 @@ _zsh_prompt_command() {
     P_PWD=${TRUNC_SYMBOL}/${P_PWD#*/}
   fi
 
-  # Update terminal title
-  if [[ $TERM == xterm* ]]; then
-    echo -ne "\033]0;${PWD##*/}\007"
+  # Update terminal title (use tmux DCS passthrough when inside tmux)
+  if [[ -n $TMUX ]]; then
+    printf "\ePtmux;\e\033]0;%s\007\e\\" "${PWD##*/}"
+  elif [[ $TERM == xterm* ]]; then
+    printf "\033]0;%s\007" "${PWD##*/}"
   fi
 
   # Parse Git branch
