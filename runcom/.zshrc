@@ -73,7 +73,12 @@ ZSH_THEME="eastwood"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git tmux)
+
+ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_AUTOCONNECT=true
+ZSH_TMUX_AUTONAME_SESSION=true
+ZSH_TMUX_AUTOQUIT=true
 
 source $ZSH/oh-my-zsh.sh
 
