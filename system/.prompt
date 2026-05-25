@@ -61,4 +61,7 @@ parse_git_branch() {
 _zsh_prompt_config
 unset _zsh_prompt_config
 
+# Drop the right-side prompt (e.g. the eastwood theme's rbenv version indicator)
+RPROMPT=""
+
 precmd() { _zsh_prompt_command; }
