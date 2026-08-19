@@ -27,6 +27,7 @@ then
   ln -sfv "$DOTFILES_DIR/git/.git_commit_template" ~
   ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
   ln -sfv "$DOTFILES_DIR/nvim/init.lua" ~/.config/nvim/
+  ln -sfv "$DOTFILES_DIR/tmux/.tmux.conf" ~
 fi
 
 if [[ "$1" == "work-vpn" ]]
