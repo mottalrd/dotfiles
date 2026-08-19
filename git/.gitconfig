@@ -94,3 +94,5 @@
 	trustExitCode = true
 [commit]
 	template = ~/.git_commit_template
+[advice]
+	implicitIdentity = false

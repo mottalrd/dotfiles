@@ -44,13 +44,19 @@ _zsh_prompt_command() {
   # Parse Git branch
   local P_GIT=$(parse_git_branch)
 
+  # Active pyenv virtualenv
+  local P_VENV=""
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    P_VENV="${P_GREEN}($(basename $VIRTUAL_ENV))${P_RESET} "
+  fi
+
   # Exit code
   local P_EXIT=""
   if [[ $EXIT_CODE != 0 ]]; then
     P_EXIT="${P_RED}✘ "
   fi
 
-  PROMPT="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+  PROMPT="${P_EXIT}${P_VENV}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
