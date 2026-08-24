@@ -2,6 +2,14 @@
 -- Kept deliberately plugin-free. NVIM_APPNAME=nvim-email keeps this
 -- fully isolated from the main ~/.config/nvim setup.
 
+-- Disable syntax highlighting entirely. Neovim's built-in mail filetype
+-- syntax file links quoted lines ("> ...") to the Function highlight
+-- group, which renders yellow under Neovim's default (colorscheme-less)
+-- colors — distracting for a compose-only buffer. Must run before the
+-- file loads/filetype is detected, or the mail ftplugin's own FileType
+-- autocmd re-enables it regardless of a per-buffer setlocal syntax=off.
+vim.cmd("syntax off")
+
 vim.opt.colorcolumn = ""
 vim.opt.textwidth = 0
 vim.opt.formatoptions:remove("t")
