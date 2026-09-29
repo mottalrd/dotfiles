@@ -109,5 +109,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source $HOME/.zshenv
 
+# Keep PATH unique. brew shellenv and rbenv init prepend their folders again
+# after .path removes duplicates. Zsh keeps the first occurrence.
+typeset -U path PATH
+
 # (2/2) Measure startup time
 # zprof
