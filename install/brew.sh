@@ -43,7 +43,7 @@ apps=(
   diff-so-fancy
   bat
   findutils
-  tldr
+  tlrc
   pyenv
   pyenv-virtualenv
   languagetool
