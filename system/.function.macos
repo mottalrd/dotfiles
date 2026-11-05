@@ -65,3 +65,14 @@ dash() {
   esac
   open "dash://$QUERY"
 }
+
+# Email
+
+# Sent-mail log: BCC every `pop` email to Fastmail, since Resend keeps sent mail
+# for 30 days only. Skips its own --bcc when the address is already passed.
+# Server side for the Resend MCP: mottalrd/ai-skills infra/resend-mcp/.
+
+pop() {
+  local log="sendmyself.alfredo@fastmail.net"
+  if [[ " ${(L)*} " == *"${log}"* ]]; then command pop "$@"; else command pop --bcc "$log" "$@"; fi
+}
