@@ -21,7 +21,7 @@ zsh uses emacs key bindings by default.
 |---|---|
 | `Ctrl+w` | Delete the word before the cursor |
 | `Option+d` | Delete the word after the cursor |
-| `Ctrl+u` | Delete from the cursor to the start of the line |
+| `Ctrl+u` | Delete the whole line |
 | `Ctrl+k` | Not available. iTerm2 uses it for **Merge All Windows** (set by `./install.sh iterm`). zsh has no other key for this action. |
 | `Ctrl+y` | Paste the last deleted text |
 
