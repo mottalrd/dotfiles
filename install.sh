@@ -58,6 +58,11 @@ then
 . "$DOTFILES_DIR/install/brew-cask.sh"
 fi
 
+if [[ "$1" == "iterm" ]]
+then
+  . "$DOTFILES_DIR/install/iterm.sh"
+fi
+
 if [[ "$1" == "npm" ]]
 then
   . "$DOTFILES_DIR/install/npm.sh"
