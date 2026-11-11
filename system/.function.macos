@@ -71,8 +71,9 @@ dash() {
 # Sent-mail log: BCC every `pop` email to Fastmail, since Resend keeps sent mail
 # for 30 days only. Skips its own --bcc when the address is already passed.
 # Server side for the Resend MCP: mottalrd/ai-skills infra/resend-mcp/.
+# Override per machine with POP_BCC (e.g. in .private). POP_BCC="" turns the BCC off.
 
 pop() {
-  local log="sendmyself.alfredo@fastmail.net"
-  if [[ " ${(L)*} " == *"${log}"* ]]; then command pop "$@"; else command pop --bcc "$log" "$@"; fi
+  local log="${POP_BCC-sendmyself.alfredo@fastmail.net}"
+  if [[ -z $log || " ${(L)*} " == *"${log}"* ]]; then command pop "$@"; else command pop --bcc "$log" "$@"; fi
 }
