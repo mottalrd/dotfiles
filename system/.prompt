@@ -34,10 +34,8 @@ _zsh_prompt_command() {
     P_PWD=${TRUNC_SYMBOL}/${P_PWD#*/}
   fi
 
-  # Update terminal title (use tmux DCS passthrough when inside tmux)
-  if [[ -n $TMUX ]]; then
-    printf "\ePtmux;\e\033]0;%s\007\e\\" "${PWD##*/}"
-  elif [[ $TERM == xterm* ]]; then
+  # Update terminal title outside tmux. Inside tmux, tmux sets it (set-titles in .tmux.conf)
+  if [[ -z $TMUX && $TERM == xterm* ]]; then
     printf "\033]0;%s\007" "${PWD##*/}"
   fi
 
